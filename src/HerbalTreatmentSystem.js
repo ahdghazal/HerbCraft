@@ -15,7 +15,7 @@ const HerbalTreatmentSystem = () => {
     }
     setError('');
     try {
-      const response = await axios.post('http://127.0.0.1:npm/submit', { complaint });
+      const response = await axios.post('http://127.0.0.1:4000/submit', { complaint });
       setResult(response.data);
     } catch (error) {
       setError('An error occurred while processing your request. Please try again later.');
@@ -36,6 +36,7 @@ const HerbalTreatmentSystem = () => {
           onChange={(e) => setComplaint(e.target.value)}
           required
         />
+        <button type="submit">Submit</button>
       </form>
       {result && (
         <div className="result">

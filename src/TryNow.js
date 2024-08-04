@@ -5,7 +5,6 @@ const TryNow = () => {
   return (
     <div className="container1">
       <HerbalTreatmentSystem />
-      <button type="submit">Submit</button>
     </div>
   );
 };
