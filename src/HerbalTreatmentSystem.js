@@ -38,14 +38,28 @@ const HerbalTreatmentSystem = () => {
         />
         <button type="submit">Submit</button>
       </form>
+
       {result && (
         <div className="result">
           <h2>Results</h2>
           <p><strong>Symptoms:</strong> {result.symptoms.length > 0 ? result.symptoms.join(', ') : 'No symptoms identified.'}</p>
           <p><strong>Diagnosis:</strong> {result.diagnosis.length > 0 ? result.diagnosis.join(', ') : 'No diagnosis found.'}</p>
-          <p><strong>Treatment:</strong> {Object.keys(result.treatment).length > 0 ? Object.keys(result.treatment).join(', ') : 'No treatment available.'}</p>
+          <p><strong>Herbs for Treatment:</strong></p>
+          <ul>
+            {Array.isArray(result.herbs) && result.herbs.length > 0 ? (
+              result.herbs.map((herb, index) => (
+                <li key={index}>
+                  {herb} (Key: {result.treatment_keys[index]})
+                </li>
+              ))
+            ) : (
+              <li>No herbs identified.</li>
+            )}
+          </ul>
+          <p><strong>Concatenated Treatment Keys:</strong> {result.concatenated_keys || 'No concatenated keys available.'}</p>
         </div>
       )}
+
       {error && <div className="error">{error}</div>}
     </div>
   );
