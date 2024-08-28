@@ -12,7 +12,7 @@ function App() {
     <Router>
       <div className="App">
         <video className="background-video" autoPlay loop muted>
-          <source src="/Users/ahdghazal/herb-craft/src/images/background.jpg" />
+          <source src={require('./images/background.jpg')} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
         <div className="content">

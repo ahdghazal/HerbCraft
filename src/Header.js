@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
-import logo from '/Users/ahdghazal/herb-craft/src/images/logo.png'; // Adjust the path according to your project structure
+import logo from './images/logo.png'; // Adjust the path according to your project structure
 
 const Header = () => {
   return (

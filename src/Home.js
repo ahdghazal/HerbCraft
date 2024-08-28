@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import lavender from '/Users/ahdghazal/herb-craft/src/images/giphy.gif'; // Adjust the path according to your project structure
+import lavender from './images/giphy.gif'; // Adjust the path according to your project structure
 
 const Home = () => {
   return (
