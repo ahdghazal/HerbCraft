@@ -131,7 +131,6 @@ const HerbalTreatmentSystem = () => {
               <li>No herbs identified.</li>
             )}
           </ul>
-          <p><strong>Concatenated Treatment Keys:</strong> {result.concatenated_keys || 'No concatenated keys available.'}</p>
           <p><strong>Selected Product Keys:</strong> {result.selectedProductKeys.join(', ') || 'No selected products.'}</p>
         </div>
       )}
