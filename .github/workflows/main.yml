@@ -39,5 +39,5 @@ jobs:
           gcloud run deploy herb-craft \
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/herb-craft:latest \
             --platform managed \
-            --region us-central1 \
+            --region me-west1 \
             --allow-unauthenticated
