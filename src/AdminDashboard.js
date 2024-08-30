@@ -1,6 +1,84 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 
+const DashboardContainer = styled.div`
+    width: 80%;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+`;
+
+const WhiteHeading = styled.h2`
+    color: white;
+`;
+
+const Title = styled.h1`
+    text-align: center;
+    color: #fffff;
+`;
+
+const InputContainer = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+`;
+
+const Input = styled.input`
+    width: 45%;
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+`;
+
+const Button = styled.button`
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+
+    &:hover {
+        background-color: #218838;
+    }
+`;
+
+const HerbTable = styled.table`
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+`;
+
+const TableHead = styled.th`
+    background-color: #f4f4f4;
+    padding: 10px;
+    border: 1px solid #ddd;
+`;
+
+const TableCell = styled.td`
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+    background-color: #f4f4f4;
+
+`;
+
+const SimulateButton = styled.button`
+    padding: 5px 10px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #28a745;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #218838;
+    }
+`;
 
 function AdminDashboard() {
     const [herbs, setHerbs] = useState({});
@@ -32,38 +110,40 @@ function AdminDashboard() {
     };
 
     return (
-        <div>
-            <h1>Admin Dashboard</h1>
-            <div>
-                <input value={newHerb} onChange={(e) => setNewHerb(e.target.value)} placeholder="Add Herb"/>
-                <button onClick={handleAddHerb}>Add Herb</button>
-            </div>
-            <div>
-                <input value={deleteHerb} onChange={(e) => setDeleteHerb(e.target.value)} placeholder="Delete Herb"/>
-                <button onClick={handleDeleteHerb}>Delete Herb</button>
-            </div>
-            <h2>Herb Percentages</h2>
-            <table>
+        <DashboardContainer>
+            <Title>Admin Dashboard</Title>
+            <InputContainer>
+                <div>
+                    <Input value={newHerb} onChange={(e) => setNewHerb(e.target.value)} placeholder="Add Herb" />
+                    <Button onClick={handleAddHerb}>Add Herb</Button>
+                </div>
+                <div>
+                    <Input value={deleteHerb} onChange={(e) => setDeleteHerb(e.target.value)} placeholder="Delete Herb" />
+                    <Button onClick={handleDeleteHerb}>Delete Herb</Button>
+                </div>
+            </InputContainer>
+            <WhiteHeading>Herb Percentages</WhiteHeading>
+            <HerbTable>
                 <thead>
                     <tr>
-                        <th>Herb Name</th>
-                        <th>Percentage</th>
-                        <th>Actions</th>
+                        <TableHead>Herb Name</TableHead>
+                        <TableHead>Percentage</TableHead>
+                        <TableHead>Actions</TableHead>
                     </tr>
                 </thead>
                 <tbody>
                     {Object.entries(herbs).map(([herb, percentage]) => (
                         <tr key={herb}>
-                            <td>{herb}</td>
-                            <td>{percentage}%</td>
-                            <td>
-                                <button onClick={() => handleGetLastKeys(herb)}>Simulate Use</button>
-                            </td>
+                            <TableCell>{herb}</TableCell>
+                            <TableCell>{percentage}%</TableCell>
+                            <TableCell>
+                                <SimulateButton onClick={() => handleGetLastKeys(herb)}>Simulate Use</SimulateButton>
+                            </TableCell>
                         </tr>
                     ))}
                 </tbody>
-            </table>
-        </div>
+            </HerbTable>
+        </DashboardContainer>
     );
 }
 
