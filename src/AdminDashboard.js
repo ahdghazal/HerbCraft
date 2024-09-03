@@ -6,6 +6,12 @@ const DashboardContainer = styled.div`
     width: 80%;
     margin: 0 auto;
     font-family: Arial, sans-serif;
+    padding: 20px;
+
+    @media (max-width: 768px) {
+        width: 95%;
+        padding: 10px;
+    }
 `;
 
 const WhiteHeading = styled.h2`
@@ -14,21 +20,42 @@ const WhiteHeading = styled.h2`
 
 const Title = styled.h1`
     text-align: center;
-    color: #fffff;
+    color: #fff;
+
+    @media (max-width: 768px) {
+        font-size: 24px;
+    }
 `;
 
 const InputContainer = styled.div`
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
+
+    @media (max-width: 768px) {
+        flex-direction: column;
+    }
+`;
+
+const InputWrapper = styled.div`
+    width: 48%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 `;
 
 const Input = styled.input`
-    width: 45%;
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     border: 2px solid #ccc;
     border-radius: 5px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 `;
 
 const Button = styled.button`
@@ -44,18 +71,33 @@ const Button = styled.button`
     &:hover {
         background-color: #218838;
     }
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 8px 16px;
+        margin-left: 0;
+        margin-top: 10px;
+    }
 `;
 
 const HerbTable = styled.table`
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+
+    @media (max-width: 768px) {
+        font-size: 14px;
+    }
 `;
 
 const TableHead = styled.th`
     background-color: #f4f4f4;
     padding: 10px;
     border: 1px solid #ddd;
+
+    @media (max-width: 768px) {
+        padding: 8px;
+    }
 `;
 
 const TableCell = styled.td`
@@ -64,6 +106,9 @@ const TableCell = styled.td`
     text-align: center;
     background-color: #f4f4f4;
 
+    @media (max-width: 768px) {
+        padding: 8px;
+    }
 `;
 
 const SimulateButton = styled.button`
@@ -77,6 +122,11 @@ const SimulateButton = styled.button`
 
     &:hover {
         background-color: #218838;
+    }
+
+    @media (max-width: 768px) {
+        padding: 4px 8px;
+        font-size: 12px;
     }
 `;
 
@@ -113,14 +163,14 @@ function AdminDashboard() {
         <DashboardContainer>
             <Title>Admin Dashboard</Title>
             <InputContainer>
-                <div>
+                <InputWrapper>
                     <Input value={newHerb} onChange={(e) => setNewHerb(e.target.value)} placeholder="Add Herb" />
                     <Button onClick={handleAddHerb}>Add Herb</Button>
-                </div>
-                <div>
+                </InputWrapper>
+                <InputWrapper>
                     <Input value={deleteHerb} onChange={(e) => setDeleteHerb(e.target.value)} placeholder="Delete Herb" />
                     <Button onClick={handleDeleteHerb}>Delete Herb</Button>
-                </div>
+                </InputWrapper>
             </InputContainer>
             <WhiteHeading>Herb Percentages</WhiteHeading>
             <HerbTable>
