@@ -161,7 +161,7 @@ function AdminDashboard() {
 
     return (
         <DashboardContainer>
-            <Title>Admin Dashboard</Title>
+            <Title>Herbs Dashboard</Title>
             <InputContainer>
                 <InputWrapper>
                     <Input value={newHerb} onChange={(e) => setNewHerb(e.target.value)} placeholder="Add Herb" />
