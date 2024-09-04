@@ -141,6 +141,7 @@ function AdminDashboard() {
 
     const fetchHerbs = async () => {
         const response = await axios.get('https://backend-s5g3266vhq-zf.a.run.app/herbs');
+        console.log(response.data);  // Log the response data to check its structure
         setHerbs(response.data);
     };
 
@@ -182,10 +183,10 @@ function AdminDashboard() {
                     </tr>
                 </thead>
                 <tbody>
-                    {Object.entries(herbs).map(([herb, percentage]) => (
+                    {Object.entries(herbs).map(([herb, data]) => (
                         <tr key={herb}>
                             <TableCell>{herb}</TableCell>
-                            <TableCell>{percentage}%</TableCell>
+                            <TableCell>{data.percentage}%</TableCell> {/* Access the percentage field */}
                             <TableCell>
                                 <SimulateButton onClick={() => handleGetLastKeys(herb)}>Simulate Use</SimulateButton>
                             </TableCell>
