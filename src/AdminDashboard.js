@@ -130,6 +130,23 @@ const SimulateButton = styled.button`
     }
 `;
 
+const ProgressBarContainer = styled.div`
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+`;
+
+const ProgressBar = styled.div`
+    height: 20px;
+    width: ${props => props.percentage}%;
+    background-color: ${props => 
+        props.percentage >= 70 ? '#28a745' : 
+        props.percentage >= 40 ? '#ffc107' : 
+        '#dc3545'};
+    transition: width 0.4s ease-in-out;
+`;
+
 function AdminDashboard() {
     const [herbs, setHerbs] = useState({});
     const [newHerb, setNewHerb] = useState("");
@@ -141,7 +158,7 @@ function AdminDashboard() {
 
     const fetchHerbs = async () => {
         const response = await axios.get('https://backend-s5g3266vhq-zf.a.run.app/herbs');
-        console.log(response.data);  // Log the response data to check its structure
+        console.log(response.data);
         setHerbs(response.data);
     };
 
@@ -186,7 +203,12 @@ function AdminDashboard() {
                     {Object.entries(herbs).map(([herb, data]) => (
                         <tr key={herb}>
                             <TableCell>{herb}</TableCell>
-                            <TableCell>{data.percentage}%</TableCell> {/* Access the percentage field */}
+                            <TableCell>
+                                <ProgressBarContainer>
+                                    <ProgressBar percentage={data.percentage} />
+                                </ProgressBarContainer>
+                                {data.percentage}%
+                            </TableCell>
                             <TableCell>
                                 <SimulateButton onClick={() => handleGetLastKeys(herb)}>Simulate Use</SimulateButton>
                             </TableCell>
